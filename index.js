@@ -19,9 +19,9 @@ app.get("/", (req, res) => {
 
 app.post("/checkin", async (req, res) => {
   try {
-    const { user_id, latitude, longitude, log_type } = req.body;
+    const body= req.body;
 
-  console.log(JSON.stringify(response.data, null, 2));
+  console.log(JSON.stringify(body, null, 2));
     if (!user_id) {
       return res.status(400).json({ error: "user_id is required" });
     }
@@ -38,11 +38,11 @@ app.post("/checkin", async (req, res) => {
     const response = await axios.post(
       `${FRAPPE_URL}/api/resource/Checkin`,
       {
-        employee: user_id,
+        employee: "HR-EMP-00017",
         time: formattedTime,
-        log_type: log_type || "IN",
-        latitude: latitude || 9.9312,
-        longitude: longitude || 76.2673
+        log_type: "IN",
+        latitude:9.9312,
+        longitude: 76.2673
       },
       {
         headers: {
