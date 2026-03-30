@@ -8,8 +8,8 @@ app.use(express.text({type:"*/*"}))
 
 // Your Frappe config
 const FRAPPE_URL = "https://tghtech.m.frappe.cloud";
-const API_KEY = "1c28e2183fd4f9a";
-const API_SECRET = "c2b6eb175dbc4a9";
+const API_KEY = process.env.API_KEY;
+const API_SECRET = process.env.API_SECRET;
 
 
 app.get("/", (req, res) => {
