@@ -13,7 +13,7 @@ const API_SECRET = process.env.API_SECRET;
 app.all("/iclock/cdata.aspx", async (req, res) => {
   try {
     console.log("Query:", req.query);
-    console.log("Body:", req.body);
+
 
     const { table } = req.query;
 
@@ -25,7 +25,6 @@ app.all("/iclock/cdata.aspx", async (req, res) => {
       // 1\t2026-03-31 10:30:00\t0\t1
       const rawData = req.body;
 
-      console.log(rawData)
 
       if (typeof rawData === "string") {
         const lines = rawData.trim().split("\n");
