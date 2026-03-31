@@ -23,10 +23,8 @@ app.get("/", (req, res) => {
 
 app.post("/iclock/cdata.aspx", async (req, res) => {
   try {
-    const body = req.body;
-    console.log("ATTENDANCE:", req.body);
-
-    console.log(JSON.stringify(body, null, 2));
+    console.log("Query:", req.query);
+    console.log("Body:", req.body);
     if (!user_id) {
       return res.status(400).json({ error: "user_id is required" });
     }
