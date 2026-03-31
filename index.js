@@ -10,6 +10,11 @@ const FRAPPE_URL = "https://tghtech.m.frappe.cloud";
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
 
+
+const db = {
+  "Tgh016":"HR-EMP-00007"
+}
+
 app.all("/iclock/cdata.aspx", async (req, res) => {
   try {
     console.log("Query:", req.query);
@@ -32,13 +37,13 @@ app.all("/iclock/cdata.aspx", async (req, res) => {
         for (const line of lines) {
           const [user_id, timestamp, status, punch] = line.split("\t");
 
-          console.log("Parsed:", { user_id, timestamp });
+          console.log("Parsed:", { user_id, timestamp, punch });
 
           // Example mapping
           await axios.post(
             `${FRAPPE_URL}/api/resource/Checkin`,
             {
-              employee: user_id, // map properly in real case
+              employee: db[user_id] || user_id, // map properly in real case
               time: timestamp,
               log_type: punch === "0" ? "IN" : "OUT",
             },
