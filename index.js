@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "API is working" });
 });
 
-app.post("/iclock/cdata", async (req, res) => {
+app.post("/iclock/cdata.aspx", async (req, res) => {
   try {
     const body = req.body;
     console.log("ATTENDANCE:", req.body);
